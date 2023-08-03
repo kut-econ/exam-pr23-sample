@@ -193,7 +193,7 @@ y = list(set(x).union(set(y)))
 print(y)
 ```
 
-## Q16
+## Q16  (2点)
 
 次のPythonコードを実行した結果出力される整数を答えなさい。
 
@@ -202,30 +202,10 @@ x = 0
 for i in range(10):
     if i % 3 == 0:
         x += 1
-    elif i % 2 == 0:
-        x -= 1
 print(x)
 ```
 
-答え：1
-
-## Q23 (5)
-
-次のPythonコードを実行した結果出力される整数を答えなさい。
-
-```python
-x = 0
-for i in range(10):
-    if i % 3 == 0:
-        x += 1
-    if i % 2 == 0:
-        x -= 1
-print(x)
-```
-
-答え：-1
-
-## Q24 (5)
+## Q17  (2点)
 
 次のPythonコードを実行した結果出力される整数を答えなさい。
 
@@ -235,97 +215,87 @@ for i in range(10):
     if i % 3 == 0:
         x += 1
         if i % 2 == 0:
-            x -= 1
+            x += 2
 print(x)
 ```
 
-答え：2
+## Q18 (2点)
 
-## Q25 (5)
+次のPythonコードを実行した結果出力される整数を答えなさい。
+
+```python
+x = 0
+for i in range(10):
+    if i % 3 == 0:
+        x += 1
+    if i % 2 == 0:
+        x += 2
+print(x)
+```
+
+## Q19 (2点)
+
+次のPythonコードを実行した結果出力される整数を答えなさい。
+
+```python
+x = 0
+for i in range(10):
+    if i % 3 == 0:
+        x += 1
+    elif i % 2 == 0:
+        x += 2
+print(x)
+```
+
+## Q20 (2点)
 
 次のPythonコードを実行した結果出力される整数を答えなさい。
 
 ```python
 x = 0
 for i in range(5):
-    for j in range(0,i):
-        x += 1
-    x -=1
+    x += i
+    for j in range(i+1):
+        x += j
 print(x)
 ```
 
-答え：5
-
-
-## Q33 (5)
-
-次のPythonコードを実行した際に得られる出力を整数値で答えなさい。ただし64ビット処理系を仮定する。
-
-```python
-import sys
-x = dict()
-for i in range(0,5):
-    x[i] = i
-overhead = sys.getsizeof(dict()) - 128
-print(sys.getsizeof(x)-overhead)
-```
-
-答え：128
-
-## Q35 (各1計4)
-
-次のPythonコードを実行したとします。
-
-```python
-x = {'dog','cat','horse'}
-y = {'cow'}.union(x)
-z = x.intersection({'cat','horse','sheep'})
-```
-
-次のうち、TrueになるものにはT、FalseになるものにはFと答えなさい。(部分点あり)
-
-1. `z.issuperset(x)` F
-2. `x.issubset(y)` T
-3. `z.issubset(y)` T
-4. `z in y` F
-
-## Q36 (各1計6)
-
-次のPythonコードのうち、エラーが出ずに実行できるものには○を、そうでないものには☓をつけなさい。（部分点あり）
-
-1. `{[],()}` ×
-2. `{{(0)}}` ×
-3. `{'':[]}` ○
-4. `{():dict()}` ○
-5. `{([],):1}` ×
-6. `dict(5='a')` ×
-
-## Q37 (5)
+## Q21 (2点)
 
 次のPythonコードを実行した際に出力される整数を書きなさい。
 
 ```python
-print({i % 4:i for i in range(10)}[0])
+x = [i*2 for i in range(10) if i % 2 == 0]
+print(x[3])
 ```
 
-答え：8
-
-## Q38 (4)
+## Q22 (2点)
 
 次のコードを実行したとき、`x`には何が代入されているか答えなさい。
 
 ```python
-def func(x):
-  if x > 1:
-    return
-  return x
+def func():
+  return
 
-x = func(2)
+x = func()
 ```
 
-答え：`None`
+## Q23 (2点)
 
-## Q39 (5)
+次のコードを実行したときに出力される整数を答えなさい。
+
+```python
+def func(x):
+  y = x
+  if y > 1:
+    y += func(y-1)
+  return y
+
+x = func(4)
+print(x)
+```
+
+## Q24
 
 次のPythonコードを実行した際に、`x`に格納されているリストを記述しなさい。例:`[1,2,3,4]`
 
@@ -342,81 +312,3 @@ x = list(gen)
 ```
 
 答え：`[1,2,6,24,120]`
-
-## Q40 (5)
-
-次のPythonコードを実行した際に出力される整数を答えなさい。
-
-```python
-x = range(10)
-y = [i if i%2==0 else -i for i in x if i % 3 != 0]
-print(y[3])
-```
-
-答え：-5
-
-## Q41 (5)
-
-次のPythonコードは100以下の全ての素数を出力するためのコードです。(a)-(c)に当てはまるコードを1~4から選びなさい。
-
-```python
-for i in range(2,100):
-  for j in range(2,i):
-    (a)______
-      (b)_____
-  else:
-    (c)______
-```
-
-1. `print(i)`
-2. `break`
-3. `continue`
-4. `if i % j == 0`
-
-答え：(a)4,(b)2,(c)1
-
-## Q42 (5)
-
-次のPythonコードは、"My teacher is a crazy guy."という文字列に含まれる各アルファベットの出現回数を印字するものである(大文字と小文字は区別しない)。
-
-```python
-string = 'My teacher is a crazy guy.'
-trans_rule = {' ':'','.':''}
-trans = str.maketrans(trans_rule)
-sclean = string.lower().translate(trans)
-x = dict()
-for c in (a)_____:
-  if c in (b)_____:
-    x[c] += 1
-  else:
-    x[c] = 1
-for k in sorted(x):
-  print("{}/{}".format(k,x[k]))
-```
-
-出力は次のようになります。
-
-```bash
-a/3
-c/2
-e/2
-g/1
-h/1
-i/1
-m/1
-r/2
-s/1
-t/1
-u/1
-y/3
-z/1
-```
-
-(a)-(b)に当てはまる正しいコードを次から選びなさい。
-
-1. `x.items()`
-2. `sclean`
-3. `set(sclean)`
-4. `x.keys()`
-
-答え：(a)2,(b)4
