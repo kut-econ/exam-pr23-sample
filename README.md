@@ -1,4 +1,4 @@
-# プログラミング2021 期末試験 模範解答
+# プログラミング2023 期末試験
 
 丸かっこ内の数字は配点です。
 
@@ -44,6 +44,8 @@ print(x,x is y)
 2. `[1,2,3] False`
 3. `[1,4,3] True`
 4. `[1,4,3] False`
+
+<div style="page-break-before:always"></div>
 
 ## Q5 (2点)
 
@@ -93,6 +95,8 @@ x = "computer"
 7. `y = 2 * x + 3 * x`
 8. `y = 3 * x - 2 * x`
 
+<div style="page-break-before:always"></div>
+
 ## Q8 (2点)
 
 次のPythonコードを実行したときに得られる出力として正しいものを一つ選びなさい。
@@ -134,6 +138,8 @@ print(x)
 3. `()`
 4. `(1)`
 
+<div style="page-break-before:always"></div>
+
 ## Q11  (5点)
 
 次のPythonコードを実行したあと、続けて実行したときにエラーが出ないコードには○を、エラーが出るコードには☓をつけなさい。
@@ -158,7 +164,7 @@ trans = str.maketrans(trans_rule)
 print("abcdabcd".translate(trans))
 ```
 
-## Q13  (5点)
+## Q13  (6点)
 
 次のPythonコードを実行したあと、続けて実行したときにエラーが出ないコードには○を、エラーが出るコードには☓をつけなさい。
 
@@ -170,7 +176,8 @@ x = {'a':1,'b':2,'c':3}
 2. `x[1] = 'a'`
 3. `x[{1,2,3}] = 'a'`
 4. `y = x[0]`
-5. `del x['b']`
+5. `x[(1,[])] = 4`
+6. `x[()] = 4`
 
 ## Q14 (2点)
 
@@ -181,6 +188,8 @@ x = {'a':2,'a':4,'b':6}
 x.update({'b':7,'b':13})
 print(x['a'] + x['b'])
 ```
+
+<div style="page-break-before:always"></div>
 
 ## Q15 (2点)
 
@@ -233,6 +242,8 @@ for i in range(10):
 print(x)
 ```
 
+<div style="page-break-before:always"></div>
+
 ## Q19 (2点)
 
 次のPythonコードを実行した結果出力される整数を答えなさい。
@@ -247,7 +258,7 @@ for i in range(10):
 print(x)
 ```
 
-## Q20 (2点)
+## Q20 (3点)
 
 次のPythonコードを実行した結果出力される整数を答えなさい。
 
@@ -262,6 +273,36 @@ print(x)
 
 ## Q21 (2点)
 
+次のPythonコードを実行した結果出力される整数を答えなさい。
+
+```python
+x = 100
+while x % 13 != 0:
+  x -= 1
+
+print(x)
+```
+
+## Q22  (3点)
+
+次のPythonコードを実行した結果出力される整数を答えなさい。
+
+```python
+x = 1
+for i in range(10):
+  x += i
+  if x > 50:
+    break
+else:
+  x += 5
+
+print(x)
+```
+
+<div style="page-break-before:always"></div>
+
+## Q23 (2点)
+
 次のPythonコードを実行した際に出力される整数を書きなさい。
 
 ```python
@@ -269,7 +310,7 @@ x = [i*2 for i in range(10) if i % 2 == 0]
 print(x[3])
 ```
 
-## Q22 (2点)
+## Q24 (1点)
 
 次のコードを実行したとき、`x`には何が代入されているか答えなさい。
 
@@ -280,7 +321,7 @@ def func():
 x = func()
 ```
 
-## Q23 (2点)
+## Q25 (3点)
 
 次のコードを実行したときに出力される整数を答えなさい。
 
@@ -295,20 +336,110 @@ x = func(4)
 print(x)
 ```
 
-## Q24
+## Q26  (3点)
 
-次のPythonコードを実行した際に、`x`に格納されているリストを記述しなさい。例:`[1,2,3,4]`
+次のPythonコードを実行したときに出力される整数を答えなさい。
 
 ```python
-def generator():
+def generator(n):
   x = 1
-  for i in range(2,7):
-    yield x
-    x *= i
+  while True:
+    yield x**n
+    x += 1
 
-gen = generator()
+gen = generator(3)
 
-x = list(gen)
+x = [next(gen)-i for i in range(5)]
+print(x[3])
 ```
 
-答え：`[1,2,6,24,120]`
+<div style="page-break-before:always"></div>
+
+## Q27  (5点)
+
+Pythonに関する以下の記述の内、正しいものには○を、誤っているものには☓をつけなさい。
+
+1. 関数の中で値を代入された変数はグローバル名前空間に属する
+2. ビルトインスコープはプログラム全体である。
+3. ビルトインモジュールにはbuiltinsモジュールの他に、sysモジュールやmathモジュールなどがある。
+4. モジュールは、原則としてバイトコンパイルされない。
+5. 一度読み込んだモジュールを、import文で再度読み込むことはできない。
+
+## Q28  (2点)
+
+次のPythonコードを実行したときに出力される整数を答えなさい。
+
+```python
+x = 0
+def f():
+    x = 1
+    def g():
+        print(x)
+    g()
+f()
+```
+
+## Q29  (3点)
+
+次のコードを実行したときに出力される整数を答えなさい。
+
+```python
+def outer():
+    y = 0
+    def inner(x):
+        nonlocal y
+        y += x
+        return y
+    return inner
+cl = outer()
+x = [cl(i) for i in range(5)]
+print(x[-1])
+```
+
+## Q30 (2点)
+
+次のコードを実行したときに出力される整数を答えなさい。
+
+```python
+import numpy as np
+x = np.arange(10)
+x += 3
+print(x[5])
+```
+
+<div style="page-break-before:always"></div>
+
+## Q31 (2点)
+
+次のコードを実行したときに出力される整数を答えなさい。
+
+```python
+import numpy as np
+x = np.array([2,3,5])
+y = np.array([1,9,4])
+z = x * y
+print(z[1])
+```
+
+## Q32  (2点)
+
+次のコードを実行したときに出力される整数を答えなさい。
+
+```python
+import numpy as np
+x = np.arange(10)
+y = x[3:8:2]
+x += 5
+print(y[1])
+```
+
+## Q33  (2点)
+
+以下のPythonコードは、Numpyを用いて、切片5、傾き2の線形モデルに従うサンプルサイズ100の疑似データを生成し、変数yに配列として格納するためのものである。ただし実測値yは標準正規分布に従う誤差を含むとする。#????に書くべきコードを答えなさい。
+
+```python
+import numpy as np
+x = np.random.normal(5,2,100)
+e = np.random.normal(0,1,100)
+y = #????
+```
